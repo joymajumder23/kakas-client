@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/images/KAKAS Logo 1MB.png"
 
 const Navbar = () => {
@@ -60,7 +60,7 @@ const Navbar = () => {
                                     <span className="badge">New</span>
                                 </a>
                             </li>
-                            <li><a>Settings</a></li>
+                            <Link to="/dashboard"><li><a>Dashboard</a></li></Link>
                             <li><a>Logout</a></li>
                         </ul>
                     </div>

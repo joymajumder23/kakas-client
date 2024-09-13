@@ -1,34 +1,37 @@
+import logo from "../../../assets/images/KAKAS Logo 1MB.png";
 import { useState } from "react";
 import { AiOutlineBars } from "react-icons/ai";
-import { BiSolidBookContent, BiSolidDonateBlood } from "react-icons/bi";
+import { BiSolidBookContent } from "react-icons/bi";
 import { FaHome, FaUsers } from "react-icons/fa";
+import { FiUpload } from "react-icons/fi";
 import { GrLogout } from "react-icons/gr";
 import { ImProfile } from "react-icons/im";
-import { MdHomeWork } from "react-icons/md";
+import { MdAddCard, MdHomeWork } from "react-icons/md";
+import { VscGitPullRequestDraft } from "react-icons/vsc";
 import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
-    const [isActive, setActive] = useState(false)
-  
-    // Sidebar Responsive Handler
-    const handleToggle = () => {
-      setActive(!isActive);
-    }
-    return (
-        <div>
-            {/* Small Screen Navbar */}
+  const [isActive, setActive] = useState(false)
+
+  // Sidebar Responsive Handler
+  const handleToggle = () => {
+    setActive(!isActive);
+  }
+  return (
+    <div>
+      {/* Small Screen Navbar */}
       <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
             <Link to='/'>
               <img
                 // className='hidden md:block'
-                // src={logo}
+                src={logo}
                 alt='logo'
                 width='50'
                 height='50'
               />
-              <p>BloodBridge</p>
+              <p>KAKAS</p>
             </Link>
           </div>
         </div>
@@ -52,12 +55,12 @@ const Sidebar = () => {
               <Link to='/'>
                 <img
                   // className='hidden md:block'
-                //   src={logo}
+                  src={logo}
                   alt='logo'
                   width='100'
                   height='100'
                 />
-                <p className='text-xl font-bold text-red-500'>BloodBridge</p>
+                <p className='text-xl font-bold text-red-500'>KAKAS</p>
               </Link>
             </div>
           </div>
@@ -68,58 +71,82 @@ const Sidebar = () => {
 
             {/*  Menu Items */}
             <nav>
-            
-                <>
-                  {/* Admin Home */}
-                  <NavLink
-                    to='/dashboard/adminHome'
-                    className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                      }`
-                    }
-                  >
-                    <MdHomeWork className='w-5 h-5' />
 
-                    <span className='mx-4 font-medium'>Admin Home</span>
-                  </NavLink>
-                  {/* All Users */}
-                  <NavLink
-                    to='all-users'
-                    className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                      }`
-                    }
-                  >
-                    <FaUsers className='w-5 h-5' />
+              <>
+                {/* Admin Home */}
+                <NavLink
+                  to='/dashboard/adminHome'
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                    }`
+                  }
+                >
+                  <MdHomeWork className='w-5 h-5' />
 
-                    <span className='mx-4 font-medium'>All Users</span>
-                  </NavLink>
-                  {/* All Blood Donation Request */}
-                  <NavLink
-                    to='all-blood-donation'
-                    className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                      }`
-                    }
-                  >
-                    <BiSolidDonateBlood className='w-7 h-10' />
+                  <span className='mx-4 font-medium'>Admin Home</span>
+                </NavLink>
+                {/* All Users */}
+                <NavLink
+                  to='all-users'
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                    }`
+                  }
+                >
+                  <FaUsers className='w-5 h-5' />
 
-                    <span className='mx-4 font-medium'>All Blood Donation Request</span>
-                  </NavLink>
-                  {/* Content Management*/}
-                  <NavLink
-                    to='content-management'
-                    className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                      }`
-                    }
-                  >
-                    <BiSolidBookContent className='w-5 h-5' />
+                  <span className='mx-4 font-medium'>All Users</span>
+                </NavLink>
+                {/* All Blood Donation Request */}
+                <NavLink
+                  to='all-blood-donation'
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                    }`
+                  }
+                >
+                  <VscGitPullRequestDraft className='w-7 h-10' />
 
-                    <span className='mx-4 font-medium'>Content Management</span>
-                  </NavLink>
-                </>
-      
+                  <span className='mx-4 font-medium'>Request</span>
+                </NavLink>
+                {/* Content Management*/}
+                <NavLink
+                  to='content-management'
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                    }`
+                  }
+                >
+                  <MdAddCard className='w-5 h-5' />
+
+                  <span className='mx-4 font-medium'>Add Content</span>
+                </NavLink>
+                {/* Content Management*/}
+                <NavLink
+                  to='content-management'
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                    }`
+                  }
+                >
+                  <BiSolidBookContent className='w-5 h-5' />
+
+                  <span className='mx-4 font-medium'>Content Management</span>
+                </NavLink>
+                {/* Content Management*/}
+                <NavLink
+                  to='upload'
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                    }`
+                  }
+                >
+                  <FiUpload className='w-5 h-5' />
+
+                  <span className='mx-4 font-medium'>Upload</span>
+                </NavLink>
+              </>
+
 
             </nav>
           </div>
@@ -161,8 +188,8 @@ const Sidebar = () => {
           </button>
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Sidebar;
