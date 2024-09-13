@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import logo from "../../../../assets/images/Kakas.png";
-const Login = () => { 
+import { FcGoogle } from "react-icons/fc";
+const Login = () => {
     const handleSubmit = () => {
 
     }
     return (
         <div>
-             <div className="hero min-h-screen">
+            <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center md:w-full lg:text-left">
-                    <img className="w-24" src={logo} alt="" />
-                        <h1 className="text-5xl font-bold mb-4">Login now!</h1>
+                        <img className="w-24 md:w-52" src={logo} alt="" />
+                        <h1 className="text-5xl font-bold mb-4">Login now</h1>
                     </div>
                     <div className="card shrink-0 md:w-1/2 max-w-sm shadow-2xl bg-base-100 rounded-none">
                         <form onSubmit={handleSubmit} className="card-body">
@@ -30,7 +31,11 @@ const Login = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn bg-red-600 text-white rounded-none" type="submit" value="Login" />
+                                <div className="flex w-full flex-col border-opacity-50">
+                                    <input className="btn bg-red-600 text-white rounded-none" type="submit" value="Login" />
+                                    <div className="divider">OR</div>
+                                   <button className="btn"><FcGoogle></FcGoogle> Google</button>
+                                </div>
                             </div>
                         </form>
                         <p className='p-6 text-center'>New Here? <Link className='font-semibold' to="/register">Create a New Account</Link></p>

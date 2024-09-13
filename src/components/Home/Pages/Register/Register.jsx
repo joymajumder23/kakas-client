@@ -9,13 +9,16 @@ const Register = () => {
         formState: { errors }, reset
     } = useForm();
 
+    const onSubmit = () => {
+
+    }
     return (
         <div>
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center md:w-1/2 lg:text-left">
+                        <img className="w-24 md:w-52" src={logo} alt="" />
                         <h1 className="text-5xl font-bold mb-4">Sign Up now!</h1>
-                        <img src={logo} alt="" />
                     </div>
                     <div className="card shrink-0 md:w-1/2 max-w-sm shadow-2xl bg-base-100 rounded-none">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
