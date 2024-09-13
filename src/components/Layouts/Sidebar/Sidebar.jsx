@@ -1,4 +1,4 @@
-import logo from "../../../assets/images/KAKAS Logo 1MB.png";
+import logo from "../../../assets/images/Kakas.png";
 import { useState } from "react";
 import { AiOutlineBars } from "react-icons/ai";
 import { BiSolidBookContent } from "react-icons/bi";

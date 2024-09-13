@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import logo from "../../../assets/images/KAKAS Logo 1MB.png"
+import logo from "../../../../assets/images/Kakas.png"
 
 const Register = () => {
     const {

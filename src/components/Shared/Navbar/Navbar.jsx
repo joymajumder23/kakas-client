@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../../assets/images/KAKAS Logo 1MB.png"
+import logo from "../../../assets/images/Kakas.png";
 
 const Navbar = () => {
     const links = <>
