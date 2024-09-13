@@ -1,9 +1,29 @@
 import { Link } from "react-router-dom";
 import logo from "../../../../assets/images/Kakas.png";
 import { FcGoogle } from "react-icons/fc";
+import useAuth from "../../../Hooks/useAuth";
 const Login = () => {
-    const handleSubmit = () => {
+    const {signIn, googleLogin} = useAuth();
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+
+    // google 
+    const handleGoogle = () => {
+        googleLogin();
     }
     return (
         <div>
@@ -33,11 +53,11 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <div className="flex w-full flex-col border-opacity-50">
                                     <input className="btn bg-red-600 text-white rounded-none" type="submit" value="Login" />
-                                    <div className="divider">OR</div>
-                                   <button className="btn"><FcGoogle></FcGoogle> Google</button>
                                 </div>
                             </div>
                         </form>
+                        <div className="divider">OR</div>
+                        <button onClick={handleGoogle} className="btn"><FcGoogle></FcGoogle> Google</button>
                         <p className='p-6 text-center'>New Here? <Link className='font-semibold' to="/register">Create a New Account</Link></p>
                     </div>
                 </div>
