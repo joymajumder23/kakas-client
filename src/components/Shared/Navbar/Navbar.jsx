@@ -1,7 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/images/Kakas.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+    const {user, logout} = useContext(AuthContext);
     const links = <>
     <li><NavLink to="/">Home</NavLink></li>
     <li><NavLink to="/post">Post</NavLink></li>
@@ -10,6 +14,12 @@ const Navbar = () => {
     <li><NavLink to="/gallery">Gallery</NavLink></li>
     <li><NavLink to="/about">About</NavLink></li>
     </>;
+    const handleSignOut = () => {
+        logout() 
+        .then(result => {
+            toast.success('Logout Successfully');
+        })
+    }
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -46,9 +56,11 @@ const Navbar = () => {
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img
+                                {
+                                    user? <img
                                     alt="Tailwind CSS Navbar component"
-                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                    src={user?.photoURL} /> : ""
+                                }
                             </div>
                         </div>
                         <ul
@@ -61,10 +73,12 @@ const Navbar = () => {
                                 </a>
                             </li>
                             <Link to="/dashboard"><li><a>Dashboard</a></li></Link>
-                            <li><a>Logout</a></li>
+                            <li onClick={handleSignOut}><a>Logout</a></li>
                         </ul>
                     </div>
-                    <Link to="/login"><a className="btn">Login</a></Link>
+                    {
+                        user? "" : <Link to="/login"><a className="btn">Login</a></Link>
+                    }
                 </div>
             </div>
         </div>

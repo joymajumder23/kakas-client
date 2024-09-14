@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../../assets/images/Kakas.png";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../../Hooks/useAuth";
+import toast from "react-hot-toast";
 const Login = () => {
-    const {signIn, googleLogin} = useAuth();
+    const { signIn, googleLogin } = useAuth();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,6 +18,8 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 console.log(result.user);
+                toast.success('Login Successfully');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error.message);
@@ -23,7 +28,11 @@ const Login = () => {
 
     // google 
     const handleGoogle = () => {
-        googleLogin();
+        googleLogin()
+            .then(result => {
+                toast.success('Login Successfully'); 
+                navigate(from, { replace: true }); 
+            })
     }
     return (
         <div>
@@ -57,7 +66,9 @@ const Login = () => {
                             </div>
                         </form>
                         <div className="divider">OR</div>
-                        <button onClick={handleGoogle} className="btn"><FcGoogle></FcGoogle> Google</button>
+                        <div className="px-6">
+                            <button onClick={handleGoogle} className="w-full btn"><FcGoogle></FcGoogle> Google</button>
+                        </div>
                         <p className='p-6 text-center'>New Here? <Link className='font-semibold' to="/register">Create a New Account</Link></p>
                     </div>
                 </div>
